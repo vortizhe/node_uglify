@@ -1,8 +1,24 @@
 # NodeUglify
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/node_uglify`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+One of the biggest asset pipeline problem is the performance when the js grows. Replacing the default ruby uglifier with node [uglifyjs](https://www.npmjs.com/package/uglifyjs) version with a light wrapper to speed up precompilation.
+
+```
+# With default ruby uglifier
+$ rake assets:precompile  210,17s user 6,00s system 100% cpu 3:35,46 total
+# With node ruby uglifier
+$ rake assets:precompile  33,76s user 5,35s system 102% cpu 38,333 total
+
+
+```
+
+## Requisites
+
+Install node and uglifyjs package.
+
+```
+$ npm install uglify-js -g
+```
 
 ## Installation
 
@@ -14,28 +30,22 @@ gem 'node_uglify'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
-Or install it yourself as:
+Update your environment config:
 
-    $ gem install node_uglify
+```ruby
+config.assets.js_compressor = NodeUglify.new
+```
 
-## Usage
+And precompile assets as usual.
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/node_uglify.
-
+```
+rake assets:precompile
+```
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
