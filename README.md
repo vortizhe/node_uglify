@@ -1,7 +1,9 @@
 # NodeUglify
 
 
-One of the biggest asset pipeline problem is the performance when the js grows. Replacing the default ruby uglifier with node [uglifyjs](https://www.npmjs.com/package/uglifyjs) version with a light wrapper to speed up precompilation.
+One of the biggest asset pipeline problem is the performance when js code grows.
+
+Replacing the default ruby uglifier with node [uglifyjs](https://www.npmjs.com/package/uglifyjs) speeds up asset precompilation up to 800%.
 
 ```
 # With default ruby uglifier
